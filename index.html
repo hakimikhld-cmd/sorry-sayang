@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    overflow: hidden;
+    text-align: center;
+}
+
+.container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 320px;
+    margin: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+h1 {
+    color: #ff4d6d;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#yesBtn {
+    background: #ff4d6d;
+    color: white;
+}
+
+#noBtn {
+    background: grey;
+    color: white;
+    position: absolute;
+}
+
+/* ❤️ hearts animation */
+.heart {
+    position: fixed;
+    top: -10px;
+    color: red;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <img src="gambar_korangg.jpg">
+
+    <h1>I'm Sorry ❤️</h1>
+    <p>I messed up… but you mean everything to me.</p>
+    <p>Please forgive me 🥺</p>
+
+    <button id="yesBtn" onclick="love()">Yes ❤️</button>
+    <button id="noBtn" onmouseover="runAway()">No 😭</button>
+
+    <p id="msg"></p>
+</div>
+
+<script>
+// message bila tekan yes
+function love(){
+    document.getElementById("msg").innerHTML = "I LOVE YOU SO MUCH ❤️🥺";
+}
+
+// button no lari 🤣
+function runAway(){
+    let btn = document.getElementById("noBtn");
+    btn.style.top = Math.random()*300 + "px";
+    btn.style.left = Math.random()*200 + "px";
+}
+
+// hearts jatuh
+function createHeart(){
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.animationDuration = (Math.random()*3+2)+"s";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{heart.remove();},5000);
+}
+
+setInterval(createHeart,300);
+</script>
+
+</body>
+</
